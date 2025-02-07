@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+.navbar {
+  font-family: 'Quicksand', sans-serif; /* Cambia il font della navbar */
+}
+
+.navbar-brand, .nav-link {
+  font-family: 'Quicksand', sans-serif; /* Applica il font ai link */
+  font-weight: 600; /* Rende il testo più visibile */
+}
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+.horror-title {
+  font-family: 'Creepster', cursive;
+  color: red;
+  font-size: 3rem;
+  text-shadow: 3px 3px 6px black;
+}
+
+
+body {
+  background-image: url('./sfondo-horror.webp'); /* Percorso relativo */
+  background-size: cover; /* Copre tutto lo schermo */
+  background-position: center; /* Centra l'immagine */
+  height: 100vh; /* Occupa tutta l'altezza della finestra */
+}
