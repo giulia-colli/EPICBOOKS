@@ -1,23 +1,28 @@
 import React from 'react';
-import horrorBooks from './horror.json'; // Importa il file JSON
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import './AllTheBooks.css';
+import horrorBooks from './horror.json';
+import { Container, Row, Col } from 'react-bootstrap';
+import SingleBook from './SingleBook';
 
-function AllTheBooks() {
+
+function AllTheBooks({ searchQuery, setSelectedBook, selectedBook }) {
+  const filteredBooks = horrorBooks.filter((book) =>
+    book.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <Container className="mt-5">
+    <Container>
       
+
       <Row>
-        {horrorBooks.map((book) => (
-          <Col key={book.asin} xs={12} sm={6} md={4} lg={3} className="mb-4">
-            <Card className="book-card">
-              <Card.Img variant="top" src={book.img} alt={book.title} className="book-image" />
-              <Card.Body className="book-body">
-                <Card.Title className="text-center">{book.title}</Card.Title>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
+        {filteredBooks.length > 0 ? (
+          filteredBooks.map((book) => (
+            <Col key={book.asin} xs={12} sm={6} md={4} lg={3} className="mb-4 d-flex">
+              <SingleBook book={book} setSelectedBook={setSelectedBook} selectedBook={selectedBook} />
+            </Col>
+          ))
+        ) : (
+          <p className="text-center text-muted">Nessun libro trovato...</p>
+        )}
       </Row>
     </Container>
   );
