@@ -11,6 +11,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 
 .horror-title {
+  padding-top:40px ;
   font-family: 'Creepster', cursive;
   color: red;
   font-size: 3rem;

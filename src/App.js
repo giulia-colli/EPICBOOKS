@@ -1,40 +1,41 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MyNav from './MyNav';
 import MyFooter from './MyFooter';
 import AllTheBooks from './AllTheBooks';
 import Welcome from './Welcome';
 import CommentArea from './CommentArea';
+import NotFound from './NotFound';
+import BookDetails from './BookDetails';
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedBook, setSelectedBook] = useState(null); // Stato per il libro selezionato
+  const [selectedBook, setSelectedBook] = useState(null);
 
   return (
-    <div className="App">
+    <Router>
       <MyNav searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <Welcome />
       <Container className="mt-4">
         <Row>
-          {/* Colonna sinistra: Libri */}
           <Col md={8}>
-            <AllTheBooks searchQuery={searchQuery} setSelectedBook={setSelectedBook} selectedBook={selectedBook} />
+            <Routes>
+              <Route path="/" element={<AllTheBooks searchQuery={searchQuery} setSelectedBook={setSelectedBook} />} />
+              <Route path="/book/:asin" element={<BookDetails />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </Col>
-          
-          {/* Colonna destra: Commenti */}
           <Col md={4}>
-            {selectedBook ? (
-              <CommentArea bookId={selectedBook} />
-            ) : (
-              <p className="text-muted text-center">Seleziona un libro per vedere le recensioni</p>
-            )}
+            {selectedBook ? <CommentArea bookId={selectedBook} /> : <p className="text-muted text-center">Seleziona un libro per vedere le recensioni</p>}
           </Col>
         </Row>
       </Container>
       <MyFooter />
-    </div>
+    </Router>
   );
 }
 
 export default App;
+

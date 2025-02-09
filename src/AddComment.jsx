@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 const API_URL = "https://striveschool-api.herokuapp.com/api/comments/";
 const API_HEADERS = {
   "Content-Type": "application/json",
-  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYyZGQ5MjUzMDRhNzAwMTUxNDhjNTIiLCJpYXQiOjE3Mzg5NDU0MTIsImV4cCI6MTc0MDE1NTAxMn0.S1QGV_Y5SUStul-UCn1ySzUAyVUo-4GPRAAV_Aj2p3I"
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzYyZGQ5MjUzMDRhNzAwMTUxNDhjNTIiLCJpYXQiOjE3MzkxMDMyNTksImV4cCI6MTc0MDMxMjg1OX0.NlsIC1GclNFLwp_l_L2mQZjMUF9IfA3AMXomzb1dSIY"
 };
 
 function AddComment({ bookId }) {
